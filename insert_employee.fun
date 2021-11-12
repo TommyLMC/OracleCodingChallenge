@@ -1,20 +1,20 @@
 PROMPT CREATE OR REPLACE FUNCTION insert_employee
-CREATE OR REPLACE Function insert_employee(i_employee_id number,
-                                            i_employee_name varchar2,
-                                            i_job_title varchar2,
-                                            i_manager_id number,
-                                            i_date_hired date,
-                                            i_salary number,
-                                            i_department_id number) return varchar2 IS
+CREATE OR REPLACE FUNCTION insert_employee(i_employee_id NUMBER,
+                                            i_employee_name VARCHAR2,
+                                            i_job_title VARCHAR2,
+                                            i_manager_id NUMBER,
+                                            i_date_hired DATE,
+                                            i_salary NUMBER,
+                                            i_department_id NUMBER) RETURN VARCHAR2 IS
                                             
-begin
-    insert into widget_ltd.employees
+BEGIN
+    INSERT INTO employees
     (employee_id,employee_name,job_title,manager_id,date_hired,salary,department_id)
-    values
+    VALUES
     (i_employee_id,i_employee_name,i_job_title,i_manager_id,i_date_hired,i_salary,i_department_id);
-    commit;
-    return null;
-exception
-  when others then
-    return 'Error on create employee record.';
-end;
+    COMMIT;
+    RETURN null;
+EXCEPTION
+  WHEN OTHERS THEN
+    RETURN 'Error on create employee record.';
+END;

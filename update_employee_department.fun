@@ -1,23 +1,23 @@
 PROMPT CREATE OR REPLACE FUNCTION update_employee_department
-CREATE OR REPLACE Function update_employee_department(i_employee_id number,
-                                                        i_department_id number) return varchar2 IS
+CREATE OR REPLACE Function update_employee_department(i_employee_id NUMBER,
+                                                        i_department_id NUMBER) RETURN VARCHAR2 IS
 
-t_department_id widget_ltd.departments.department_id%type;
+t_department_id departments.department_id%TYPE;
 
-begin
-    select department_id into t_department_id from widget_ltd.departments where department_id = i_department_id;
+BEGIN
+    SELECT department_id INTO t_department_id FROM departments WHERE department_id = i_department_id;
 
-    begin
-        update widget_ltd.employees
-        set department_id = t_department_id
-        where employee_id = i_employee_id;
-        commit;
-    exception
-        when others then
-            return 'Error on update employee department.';
-    end;        
-    return null;
-exception
-  when others then
-    return 'Department not found.';
-end;
+    BEGIN
+        UPDATE employees
+        SET department_id = t_department_id
+        WHERE employee_id = i_employee_id;
+        COMMIT;
+    EXCEPTION
+        WHEN OTHERS THEN
+            RETURN 'Error on update employee department.';
+    END;        
+    RETURN NULL;
+EXCEPTION
+    WHEN OTHERS THEN
+        RETURN 'Department not found.';
+END;

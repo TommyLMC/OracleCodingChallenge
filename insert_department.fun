@@ -1,16 +1,16 @@
 PROMPT CREATE OR REPLACE FUNCTION insert_department
-CREATE OR REPLACE Function insert_department(i_department_id number,
-                                            i_department_name varchar2,
-                                            i_location varchar2) return varchar2 IS
+CREATE OR REPLACE FUNCTION insert_department(i_department_id NUMBER,
+                                            i_department_name VARCHAR2,
+                                            i_location VARCHAR2) RETURN VARCHAR2 IS
                                             
-begin
-    insert into widget_ltd.departments
-    (DEPARTMENT_ID,DEPARTMENT_NAME,LOCATION)
-    values
+BEGIN
+    INSERT INTO departments
+    (department_id,department_name,location)
+    VALUES
     (i_department_id,i_department_name,i_location);
-    commit;
-    return null;
-exception
-  when others then
-    return 'Error on create department record.';
-end;
+    COMMIT;
+    RETURN NULL;
+EXCEPTION
+  WHEN OTHERS THEN
+    RETURN 'Error on create department record.';
+END;

@@ -1,12 +1,12 @@
 PROMPT CREATE OR REPLACE FUNCTION get_employee_salary
-CREATE OR REPLACE Function get_employee_salary(i_employee_id number) return number IS
+CREATE OR REPLACE FUNCTION get_employee_salary(i_employee_id NUMBER) RETURN NUMBER IS
 
-t_salary widget_ltd.employees.salary%type:=0;
+    t_salary widget_ltd.employees.salary%TYPE:=0;
 
-begin
-    select salary into t_salary from widget_ltd.employees where employee_id = i_employee_id;
-    return t_salary;
-exception
-  when others then
-    return 0;
-end;
+BEGIN
+    SELECT salary INTO t_salary FROM employees WHERE employee_id = i_employee_id;
+    RETURN t_salary;
+EXCEPTION
+    WHEN OTHERS THEN
+        RETURN 0;
+END;

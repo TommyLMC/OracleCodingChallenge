@@ -1,17 +1,18 @@
 -- create tables
-create table widget_ltd.departments
-(department_id number(5) not null
-,department_name varchar2(50) not null
-,location varchar2(50) not null
+CREATE TABLE departments
+(department_id NUMBER(5) NOT NULL
+,department_name VARCHAR2(50) NOT NULL
+,location VARCHAR2(50) NOT NULL
 ,CONSTRAINT pk_departments PRIMARY KEY (department_id)
 );
-create table widget_ltd.employees
-(employee_id  NUMBER(10) not null
-,employee_name varchar2(50) not null
-,job_title varchar2(50) not null
-,manager_id number(10)
-,date_hired date not null
-,salary number(10) not null
-,department_id number(5) not null
+CREATE TABLE employees
+(employee_id  NUMBER(10) NOT NULL
+,employee_name VARCHAR2(50) NOT NULL
+,job_title VARCHAR2(50) NOT NULL
+,manager_id NUMBER(10)
+,date_hired DATE NOT NULL
+,salary NUMBER(10) NOT NULL
+,department_id NUMBER(5) NOT NULL
 ,CONSTRAINT pk_employees PRIMARY KEY (employee_id)
+,CONSTRAINT fk_departments FOREIGN KEY (department_id) REFERENCES departments (department_id)
 );
