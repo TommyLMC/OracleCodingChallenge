@@ -1,0 +1,1 @@
+select widget_ltd.get_employee_salary(90001) from dual;
